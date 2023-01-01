@@ -14,10 +14,7 @@ const Daystamp = {
 		return Daystamp.fromTimestamp(date.getTime());
 	},
 	fromDateTime: function (datetime) {
-		const time = Date.parse(datetime + ' UTC');
-		return Math.round(
-			(new Date(time).getTime() - Daystamp.epoch) / Daystamp.msPerDay
-		);
+		return this.fromTimestamp(Date.parse(datetime + ' UTC'));
 	},
 	fromYMD: function (y, m, d) {
 		const date = new Date();
