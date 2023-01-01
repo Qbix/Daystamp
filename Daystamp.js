@@ -139,8 +139,8 @@ const Daystamp = {
 		ymdBirth = Daystamp.toYMD(daystampBirth);
 		ymdNow = Daystamp.toYMD(daystampNow);
 		var years = ymdNow[0] - ymdBirth[0];
-		return (ymdNow[1] < ymdBirth
-			|| (ymdNow[1] === ymdBirth && ymdNow[2] < ymdBirth))
+		return (ymdNow[1] < ymdBirth[1]
+			|| (ymdNow[1] === ymdBirth[1] && ymdNow[2] < ymdBirth[2]))
 			? years - 1 : years;
 	}
 };
