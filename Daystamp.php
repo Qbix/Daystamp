@@ -51,6 +51,17 @@ class Daystamp
     }
 
     /**
+     * Get today's daystamp
+     * @method today
+     * @static
+     * @return {integer}
+     */
+    static function today()
+    {
+        return self::fromTimestamp(time());
+    }
+
+    /**
      * Get PHP timestamp from a daystamp
      * @method toTimestamp
      * @static
@@ -96,6 +107,21 @@ class Daystamp
         );
     }
     
+    /**
+     * Get age, in years, of someone born on a daystamp
+     * @method age
+     * @static
+     * @param {integer} $daystampBirth
+     * @param {integer} $daystampNow
+     * @return {integer}
+     */
+    static function age(int $daystampBirth, int $daystampNow)
+    {
+        $epoch = new DateTimeImmutable("0000-01-01 00:00:00");
+        $dtiBirth = $epoch->modify("$daystampBirth day");
+        $dtiNow = $epoch->modify("$daystampNow day");
+        return (int)$dtiBirth->diff($dtiNow)->format("%y");
+    }
 
     /**
      * The daystamp epoch as a timestamp
