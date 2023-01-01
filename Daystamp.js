@@ -4,7 +4,7 @@
  * You can store daystamps and do arithmetic with them.
  * @class Daystamp
  */
-Daystamp = {
+const Daystamp = {
 	fromTimestamp: function (timestamp) {
 		return Math.round(
 			(timestamp - Daystamp.epoch) / Daystamp.msPerDay
@@ -14,13 +14,13 @@ Daystamp = {
 		return Daystamp.fromTimestamp(date.getTime());
 	},
 	fromDateTime: function (datetime) {
-		var time = Date.parse(datetime + ' UTC');
+		const time = Date.parse(datetime + ' UTC');
 		return Math.round(
 			(new Date(time).getTime() - Daystamp.epoch) / Daystamp.msPerDay
 		);
 	},
 	fromYMD: function (y, m, d) {
-		var date = new Date();
+		const date = new Date();
 		date.setUTCFullYear(y, m+1, d);
 		date.setUTCHours(0, 0, 0);
 		return Math.round(
@@ -34,7 +34,7 @@ Daystamp = {
 		return new Date(Daystamp.toTimestamp(daystamp));
 	},
 	toDateTime(daystamp, separator) {
-		var date = Daystamp.toDate(daystamp);
+		const date = Daystamp.toDate(daystamp);
 		if (separator === undefined) {
 			separator = ' ';
 		}
@@ -44,7 +44,7 @@ Daystamp = {
 			+ separator + '00:00:00';
 	},
 	toYMD: function (daystamp) {
-		var date = Daystamp.toDate(daystamp);
+		const date = Daystamp.toDate(daystamp);
 		return [
 			date.getUTCFullYear(),
 			date.getUTCMonth(),
